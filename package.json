@@ -1,0 +1,25 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "This is a simple but responsive weather app made using HTML, CSS, JS, Webpack, and the OpenWeather API",
+  "private":true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeischkeM91/weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeischkeM91/weather-app/issues"
+  },
+  "homepage": "https://github.com/MeischkeM91/weather-app#readme",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

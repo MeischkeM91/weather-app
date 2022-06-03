@@ -1,0 +1,1 @@
+document.body.appendChild(function(){const n=document.createElement("div");return n.textContent=" Working!",n}());
