@@ -1,4 +1,43 @@
+:root{
+    --background-blue: #A6E3FE;
+}
 *{
     padding: 0;
     margin: 0;
+}
+#wrapper{
+    background-color: var(--background-blue);
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 2fr) 1fr;
+    grid-template-areas: 
+    "weatherContent weatherContent topCitiesContent"
+    "weatherContent weatherContent topCitiesContent"
+    "moreSoonOne moreSoonTwo topCitiesContent";
+    gap: 1%;
+    padding: 1%;
+    height: 97vh;
+    min-width: 1100px;
+    min-height: 700px;
+}
+.weather-content, .top-cities-content, .more-soon-1, .more-soon-2 {
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 0px 2px black;
+    border-radius: 10px;
+}
+.weather-content:hover, .top-cities-content:hover, .more-soon-1:hover, .more-soon-2:hover {
+    box-shadow: 0px 0px 3px black;
+}
+.weather-content{
+    grid-area: weatherContent;
+}
+.top-cities-content{
+    grid-area: topCitiesContent;
+}
+.more-soon-1{
+    grid-area: moreSoonOne;
+}
+.more-soon-2{
+    grid-area: moreSoonTwo;
 }
