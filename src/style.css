@@ -8,12 +8,13 @@
 #wrapper{
     background-color: var(--background-blue);
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr) 15px;
     grid-template-columns: repeat(2, 2fr) 1fr;
     grid-template-areas: 
     "weatherContent weatherContent topCitiesContent"
     "weatherContent weatherContent topCitiesContent"
-    "moreSoonOne moreSoonTwo topCitiesContent";
+    "moreSoonOne moreSoonTwo topCitiesContent"
+    "footer footer footer";
     gap: 1%;
     padding: 1%;
     height: 97vh;
@@ -40,4 +41,7 @@
 }
 .more-soon-2{
     grid-area: moreSoonTwo;
+}
+footer{
+    grid-area: footer;
 }
