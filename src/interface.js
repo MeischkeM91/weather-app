@@ -1,5 +1,6 @@
 // This is all of the code that builds the user interface
-import { utcToZonedTime, format} from 'date-fns-tz'
+import { utcToZonedTime, format} from 'date-fns-tz';
+import * as icons from './importicons';
 
 // This will build the "location-details" section of the main content container
 function buildLocDetails(locData, timeZone){
@@ -57,4 +58,9 @@ function buildLocStats(data){
     windSpeedDiv.appendChild(windSpeedData);
 };
 
-export{buildLocDetails, buildLocStats};
+function buildWeatherOutlook(data){
+    const weatherIcon = document.querySelector('.weather-icon');
+    weatherIcon.src=icons.SunnyIcon;
+}
+
+export{buildLocDetails, buildLocStats, buildWeatherOutlook};
