@@ -48,3 +48,12 @@
 footer{
     grid-area: footer;
 }
+/** Location Header Style **/
+.city-state-head{
+    font-size: 2rem;
+    font-weight: 400;
+}
+.date-head{
+    font-size: 1.3rem;
+    font-weight: 300;
+}
