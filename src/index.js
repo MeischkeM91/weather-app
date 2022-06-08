@@ -1,8 +1,8 @@
 import './style.css';
-import {buildLocDetails} from './interface';
+import {buildLocDetails, buildLocStats} from './interface';
 
 // this var will act as the value passed in through search bar
-let testLoc = 'manhattan';
+let testLoc = 'tampa';
 let tempUnit = 'imperial';
 
 // Factory Function to create the location object
@@ -25,6 +25,7 @@ async function getWeatherData(loc){
     const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationData.lat}&lon=${locationData.lon}&units=${tempUnit}&appid=${owAPIKey}`);
     const weatherData = await response.json();
     buildLocDetails(locationData, weatherData.timezone);
+    buildLocStats(weatherData);
     return weatherData;
 }
 

@@ -16,10 +16,45 @@ function buildLocDetails(locData, timeZone){
     const output = format(zonedDate, datePattern, { newTimeZone});
     const dateHead = document.createElement('p');
     dateHead.classList.add('date-head');
-    dateHead.textContent = `${output}`
+    dateHead.textContent = `${output}`;
     // Append elements
     locationHeaderDiv.appendChild(cityStateHead);
     locationHeaderDiv.appendChild(dateHead);
-}
+};
 
-export{buildLocDetails};
+function buildLocStats(data){
+    const locationStatsDiv = document.querySelector('.location-stats');
+    // Each line will have a div with two p elems, one for title and one for data
+    const humidityDiv = document.createElement('div');
+    humidityDiv.classList.add('humidity-container');
+    const humidityTitle = document.createElement('p');
+    humidityTitle.innerText = `Humidity:`;
+    const humidityData = document.createElement('p');
+    humidityData.innerText = `${Math.round(data.current.humidity)}%`;
+    const chanceOfRainDiv = document.createElement('div');
+    chanceOfRainDiv.classList.add('rain-chance-container');
+    const chanceOfRainTitle = document.createElement('p');
+    chanceOfRainTitle.innerText = `Chance of Rain:`;
+    const chanceOfRainData = document.createElement('p');
+    let chanceOfRain = Math.round((data.hourly[0].pop)*100);
+    chanceOfRainData.innerText = `${chanceOfRain}%`;
+    const windSpeedDiv = document.createElement('div');
+    windSpeedDiv.classList.add('wind-speed-container');
+    const windSpeedTitle = document.createElement('p');
+    windSpeedTitle.innerText = `Wind Speed:`;
+    const windSpeedData = document.createElement('p');
+    windSpeedData.innerText = `${Math.round(data.current.wind_speed)} mph`;
+
+    // Append elements
+    locationStatsDiv.appendChild(humidityDiv);
+    humidityDiv.appendChild(humidityTitle);
+    humidityDiv.appendChild(humidityData);
+    locationStatsDiv.appendChild(chanceOfRainDiv);
+    chanceOfRainDiv.appendChild(chanceOfRainTitle);
+    chanceOfRainDiv.appendChild(chanceOfRainData);
+    locationStatsDiv.appendChild(windSpeedDiv);
+    windSpeedDiv.appendChild(windSpeedTitle);
+    windSpeedDiv.appendChild(windSpeedData);
+};
+
+export{buildLocDetails, buildLocStats};
