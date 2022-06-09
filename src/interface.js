@@ -98,7 +98,13 @@ function buildWeatherOutlook(data){
     currentTempUnit.innerText = 'F';
     const currentTempDescription = document.createElement('p');
     currentTempDescription.classList.add('current-temp-description');
-    currentTempDescription.innerText = data.current.weather[0].description;
+    // Need to capitalize each word in the description
+    const tempDescriptionData = data.current.weather[0].description;
+    const tempDescriptionStr = tempDescriptionData.split(" ");
+    for (let i = 0; i < tempDescriptionStr.length; i++) {
+        tempDescriptionStr[i] = tempDescriptionStr[i][0].toUpperCase() + tempDescriptionStr[i].substr(1);
+    } // Places each word into an array while capitalizing the first letter
+    currentTempDescription.innerText = tempDescriptionStr.join(" ");
     const feelsLikeContainer = document.createElement('div');
     feelsLikeContainer.classList.add('feels-like-container');
     const feelsLike = document.createElement('p');
