@@ -84,3 +84,28 @@ footer{
     font-size: 1.5rem;
 }
 .humidity-container p,.rain-chance-container p,.wind-speed-container p{ font-weight: 400;}
+/** Weather Temp Details **/
+.weather-outlook{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+}
+.weather-icon{
+    width: 40%;
+}
+.temp-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.current-temp{
+    font-size: 5rem;
+    font-weight: 400;
+}
+.current-temp-unit{
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+.current-temp-description{font-size: 2.5rem; font-weight: 400;}
+.current-temp-container, .feels-like-container{display: flex;}
