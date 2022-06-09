@@ -23,6 +23,7 @@ function buildLocDetails(locData, timeZone){
     locationHeaderDiv.appendChild(dateHead);
 };
 
+// This function displays weather stats such as Humidity, Chance of Rain, and Wind Speed 
 function buildLocStats(data){
     const locationStatsDiv = document.querySelector('.location-stats');
     // Each line will have a div with two p elems, one for title and one for data
@@ -58,6 +59,7 @@ function buildLocStats(data){
     windSpeedDiv.appendChild(windSpeedData);
 };
 
+// This function determines which icon should be displayed and returns it
 const determineWeatherIcon = (cond) => {
     let weatherCond = cond;
     if(weatherCond == 'Thunderstorm'){
@@ -83,6 +85,37 @@ function buildWeatherOutlook(data){
     let weatherCond = (data.current.weather[0].main);
     let iconToUse = determineWeatherIcon(weatherCond);
     weatherIcon.src=iconToUse;
+    // This code will build the temp details div
+    const tempDetailsContainer = document.querySelector('.temp-details');
+    const currentTempContainer = document.createElement('div');
+    currentTempContainer.classList.add('current-temp-container');
+    const currentTemp = document.createElement('p');
+    currentTemp.classList.add('current-temp');
+    let currentTempData = Math.round(data.current.temp);
+    currentTemp.innerText = currentTempData;
+    const currentTempUnit = document.createElement('p');
+    currentTemp.classList.add('current-temp-unit');
+    currentTempUnit.innerText = 'F';
+    const currentTempDescription = document.createElement('p');
+    currentTempDescription.classList.add('current-temp-description');
+    currentTempDescription.innerText = data.current.weather[0].description;
+    const feelsLikeContainer = document.createElement('div');
+    feelsLikeContainer.classList.add('feels-like-container');
+    const feelsLike = document.createElement('p');
+    feelsLike.classList.add('feels-like');
+    let feelsLikeData = Math.round(data.current.feels_like);
+    feelsLike.innerText = `Feels Like - ${feelsLikeData}`;
+    const feelsLikeUnit = document.createElement('p');
+    feelsLikeUnit.classList.add('feels-like-unit');
+    feelsLikeUnit.innerText = 'F';
+
+    tempDetailsContainer.appendChild(currentTempContainer);
+    currentTempContainer.appendChild(currentTemp);
+    currentTempContainer.appendChild(currentTempUnit);
+    tempDetailsContainer.appendChild(currentTempDescription);
+    tempDetailsContainer.appendChild(feelsLikeContainer);
+    feelsLikeContainer.appendChild(feelsLike);
+    feelsLikeContainer.appendChild(feelsLikeUnit);
 };
 
 export{buildLocDetails, buildLocStats, buildWeatherOutlook};
