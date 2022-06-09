@@ -58,9 +58,31 @@ function buildLocStats(data){
     windSpeedDiv.appendChild(windSpeedData);
 };
 
+const determineWeatherIcon = (cond) => {
+    let weatherCond = cond;
+    if(weatherCond == 'Thunderstorm'){
+        return icons.ThunderIcon;
+    } else if(weatherCond == 'Drizzle'){
+        return icons.DrizzleIcon;
+    } else if(weatherCond == 'Rain'){
+        return icons.RainIcon;
+    } else if(weatherCond == 'Snow'){
+        return icons.SnowIcon;
+    } else if(weatherCond=='Mist' || weatherCond=='Smoke' || weatherCond=='Haze' || weatherCond=='Dust' || weatherCond=='Fog' || weatherCond=='Sand' || weatherCond=='Ash' || weatherCond=='Squall' || weatherCond=='Tornado' ){
+        return icons.HazeFogIcon;
+    } else if(weatherCond == 'Clear'){
+        return icons.SunnyIcon;
+    } else {
+        return icons.CloudyIcon;
+    }
+};
+
 function buildWeatherOutlook(data){
+    // This code will determine the weather icon displayed
     const weatherIcon = document.querySelector('.weather-icon');
-    weatherIcon.src=icons.SunnyIcon;
-}
+    let weatherCond = (data.current.weather[0].main);
+    let iconToUse = determineWeatherIcon(weatherCond);
+    weatherIcon.src=iconToUse;
+};
 
 export{buildLocDetails, buildLocStats, buildWeatherOutlook};

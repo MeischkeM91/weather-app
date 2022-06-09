@@ -2,7 +2,7 @@ import './style.css';
 import {buildLocDetails, buildLocStats, buildWeatherOutlook} from './interface';
 
 // this var will act as the value passed in through search bar
-let testLoc = 'tampa';
+let testLoc = 'seattle';
 let tempUnit = 'imperial';
 
 // Factory Function to create the location object
