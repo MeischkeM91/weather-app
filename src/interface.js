@@ -94,7 +94,7 @@ function buildWeatherOutlook(data){
     let currentTempData = Math.round(data.current.temp);
     currentTemp.innerText = currentTempData;
     const currentTempUnit = document.createElement('p');
-    currentTemp.classList.add('current-temp-unit');
+    currentTempUnit.classList.add('current-temp-unit');
     currentTempUnit.innerText = 'F';
     const currentTempDescription = document.createElement('p');
     currentTempDescription.classList.add('current-temp-description');
@@ -104,7 +104,7 @@ function buildWeatherOutlook(data){
     const feelsLike = document.createElement('p');
     feelsLike.classList.add('feels-like');
     let feelsLikeData = Math.round(data.current.feels_like);
-    feelsLike.innerText = `Feels Like - ${feelsLikeData}`;
+    feelsLike.innerText = `Feels Like ${feelsLikeData}`;
     const feelsLikeUnit = document.createElement('p');
     feelsLikeUnit.classList.add('feels-like-unit');
     feelsLikeUnit.innerText = 'F';
