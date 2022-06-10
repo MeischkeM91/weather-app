@@ -132,6 +132,9 @@ function buildWeeklyForecast(data){
     // This function will create a container holding basic forecast info
     function createDayOfForecast(weatherData,i){
         const dayOfForecastContainer = document.createElement('div');
+        dayOfForecastContainer.classList.add('day-forecast-container')
+        const dayOfForecastTempContainer = document.createElement('div');
+        dayOfForecastTempContainer.classList.add('day-forecast-temp-container')
         const dayForecastTemp = document.createElement('p');
         dayForecastTemp.classList.add('forecast-temp');
         const dayForecastTempUnit = document.createElement('p');
@@ -155,10 +158,11 @@ function buildWeeklyForecast(data){
         dateOfForecast.innerText = dateToDisplay;
 
         forecastContainer.appendChild(dayOfForecastContainer);
-        dayOfForecastContainer.appendChild(dayForecastTemp);
-        dayOfForecastContainer.appendChild(dayForecastTempUnit);
-        forecastContainer.appendChild(dayOfForecast);
-        forecastContainer.appendChild(dateOfForecast);
+        dayOfForecastContainer.appendChild(dayOfForecastTempContainer);
+        dayOfForecastTempContainer.appendChild(dayForecastTemp);
+        dayOfForecastTempContainer.appendChild(dayForecastTempUnit);
+        dayOfForecastContainer.appendChild(dayOfForecast);
+        dayOfForecastContainer.appendChild(dateOfForecast);
     };
 
     for(let i=0;i<6;i++){
