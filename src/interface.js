@@ -1,4 +1,5 @@
 // This is all of the code that builds the user interface
+import { startOfWeek, addDays } from 'date-fns';
 import { utcToZonedTime, format} from 'date-fns-tz';
 import * as icons from './importicons';
 
@@ -124,4 +125,45 @@ function buildWeatherOutlook(data){
     feelsLikeContainer.appendChild(feelsLikeUnit);
 };
 
-export{buildLocDetails, buildLocStats, buildWeatherOutlook};
+// This function will build the weekly forecast
+function buildWeeklyForecast(data){
+    const forecastContainer = document.querySelector('.week-forecast');
+
+    // This function will create a container holding basic forecast info
+    function createDayOfForecast(weatherData,i){
+        const dayOfForecastContainer = document.createElement('div');
+        const dayForecastTemp = document.createElement('p');
+        dayForecastTemp.classList.add('forecast-temp');
+        const dayForecastTempUnit = document.createElement('p');
+        dayForecastTempUnit.classList.add('forecast-temp-unit');
+        dayForecastTempUnit.innerText = 'F';
+        const dayOfForecast = document.createElement('p');
+        const dateOfForecast = document.createElement('p');
+        
+        let today = new Date();
+        // Temp to display for each day
+        let dayForecastTempData = Math.round(weatherData.daily[i].temp.day);
+        // Set display to display the following day
+        const dayFormat='eeee';
+        let dayToDisplay = format(addDays(today,i+1),dayFormat);
+        // Set display to display the following date
+        const dateFormat='P';
+        let dateToDisplay = format(addDays(today,i+1),dateFormat);
+        // Fill in forecast data
+        dayForecastTemp.innerText = dayForecastTempData;
+        dayOfForecast.innerText = dayToDisplay;
+        dateOfForecast.innerText = dateToDisplay;
+
+        forecastContainer.appendChild(dayOfForecastContainer);
+        dayOfForecastContainer.appendChild(dayForecastTemp);
+        dayOfForecastContainer.appendChild(dayForecastTempUnit);
+        forecastContainer.appendChild(dayOfForecast);
+        forecastContainer.appendChild(dateOfForecast);
+    };
+
+    for(let i=0;i<6;i++){
+        createDayOfForecast(data,i);
+    };
+};
+
+export{buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast};

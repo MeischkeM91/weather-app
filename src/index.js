@@ -1,5 +1,5 @@
 import './style.css';
-import {buildLocDetails, buildLocStats, buildWeatherOutlook} from './interface';
+import {buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast} from './interface';
 
 // this var will act as the value passed in through search bar
 let testLoc = 'seattle';
@@ -27,6 +27,7 @@ async function getWeatherData(loc){
     buildLocDetails(locationData, weatherData.timezone);
     buildLocStats(weatherData);
     buildWeatherOutlook(weatherData);
+    buildWeeklyForecast(weatherData);
     return weatherData;
 }
 
