@@ -174,9 +174,11 @@ function buildTopCititesList(locData,weatherData){
     const citiesListContainer = document.querySelector('.top-cities-list-container');
     // Build each line
     const topCityContainer = document.createElement('div');
+    topCityContainer.classList.add('top-city-container')
     const topCityItem = document.createElement('p');
     topCityItem.innerText = `${locData.city}, ${locData.state}`
     const topCityTempContainer = document.createElement('div');
+    topCityTempContainer.classList.add('top-city-temp-container')
     const topCityTemp = document.createElement('p');
     topCityTemp.innerText = Math.round(weatherData.current.temp);
     const topCityTempUnit = document.createElement('p');
