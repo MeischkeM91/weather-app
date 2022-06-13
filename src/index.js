@@ -1,8 +1,7 @@
 import './style.css';
-import {buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast} from './interface';
+import {buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast, buildTopCititesList} from './interface';
 
 // this var will act as the value passed in through search bar
-let testLoc = 'seattle';
 let tempUnit = 'imperial';
 let topCitiesArr = ['New York','Chicago','Denver','Seattle','Tokyo','Beijing','Rome','Berlin','Paris','London']
 
@@ -26,21 +25,33 @@ async function getWeatherData(loc){
     const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationData.lat}&lon=${locationData.lon}&units=${tempUnit}&appid=${owAPIKey}`);
     const weatherData = await response.json();
     return weatherData;
-}
+};
 
+// This function will generate a list of top cities and their current temp
+function generateTopCities(arr){
+    let topCities = arr;
+    async function genList(loc){
+        let locationQuery = await getLocationData(loc);
+        let weatherQuery = await getWeatherData(locationQuery);
+        buildTopCititesList(locationQuery,weatherQuery);
+    }
+    topCities.forEach(element => {
+        console.log(element);
+        genList(element);
+    });
+};
 
 // TESTING PURPOSES
 // This will act as what happens when the location is searched (search initiated)
-async function testFunc(){
-    let locationQuery = await getLocationData(testLoc)
+async function testFunc(loc){
+    let locationQuery = await getLocationData(loc);
     let weatherQuery = await getWeatherData(locationQuery);
     buildLocDetails(locationQuery, weatherQuery.timezone);
     buildLocStats(weatherQuery);
     buildWeatherOutlook(weatherQuery);
     buildWeeklyForecast(weatherQuery);
-    console.log(anotherTest);
-    console.log(anotherTest.current.temp);
-}
+};
 
-testFunc();
+testFunc(topCitiesArr[3]);
+generateTopCities(topCitiesArr);
 // TESTING PURPOSES

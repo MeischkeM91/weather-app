@@ -19,7 +19,7 @@ function buildLocDetails(locData, timeZone){
     const dateHead = document.createElement('p');
     dateHead.classList.add('date-head');
     dateHead.textContent = `${output}`;
-    // Append elements
+    // Append elements to page
     locationHeaderDiv.appendChild(cityStateHead);
     locationHeaderDiv.appendChild(dateHead);
 };
@@ -47,8 +47,7 @@ function buildLocStats(data){
     windSpeedTitle.innerText = `Wind Speed:`;
     const windSpeedData = document.createElement('p');
     windSpeedData.innerText = `${Math.round(data.current.wind_speed)} mph`;
-
-    // Append elements
+    // Append elements to page
     locationStatsDiv.appendChild(humidityDiv);
     humidityDiv.appendChild(humidityTitle);
     humidityDiv.appendChild(humidityData);
@@ -115,7 +114,7 @@ function buildWeatherOutlook(data){
     const feelsLikeUnit = document.createElement('p');
     feelsLikeUnit.classList.add('feels-like-unit');
     feelsLikeUnit.innerText = 'F';
-
+    // Append elements to page
     tempDetailsContainer.appendChild(currentTempContainer);
     currentTempContainer.appendChild(currentTemp);
     currentTempContainer.appendChild(currentTempUnit);
@@ -156,7 +155,7 @@ function buildWeeklyForecast(data){
         dayForecastTemp.innerText = dayForecastTempData;
         dayOfForecast.innerText = dayToDisplay;
         dateOfForecast.innerText = dateToDisplay;
-
+        // Append elements to page
         forecastContainer.appendChild(dayOfForecastContainer);
         dayOfForecastContainer.appendChild(dayOfForecastTempContainer);
         dayOfForecastTempContainer.appendChild(dayForecastTemp);
@@ -170,22 +169,24 @@ function buildWeeklyForecast(data){
     };
 };
 
+// This function will build the Top Cities current temp list
 function buildTopCititesList(locData,weatherData){
     const citiesListContainer = document.querySelector('.top-cities-list-container');
-
-
+    // Build each line
     const topCityContainer = document.createElement('div');
     const topCityItem = document.createElement('p');
+    topCityItem.innerText = `${locData.city}, ${locData.state}`
     const topCityTempContainer = document.createElement('div');
     const topCityTemp = document.createElement('p');
+    topCityTemp.innerText = Math.round(weatherData.current.temp);
     const topCityTempUnit = document.createElement('p');
-
+    topCityTempUnit.innerText = `F`;
+    // Append elements to page
     citiesListContainer.appendChild(topCityContainer);
     topCityContainer.appendChild(topCityItem);
     topCityContainer.appendChild(topCityTempContainer);
     topCityTempContainer.appendChild(topCityTemp);
     topCityTempContainer.appendChild(topCityTempUnit);
-
 };
 
-export{buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast};
+export{buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast, buildTopCititesList};
