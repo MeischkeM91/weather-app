@@ -170,4 +170,22 @@ function buildWeeklyForecast(data){
     };
 };
 
+function buildTopCititesList(locData,weatherData){
+    const citiesListContainer = document.querySelector('.top-cities-list-container');
+
+
+    const topCityContainer = document.createElement('div');
+    const topCityItem = document.createElement('p');
+    const topCityTempContainer = document.createElement('div');
+    const topCityTemp = document.createElement('p');
+    const topCityTempUnit = document.createElement('p');
+
+    citiesListContainer.appendChild(topCityContainer);
+    topCityContainer.appendChild(topCityItem);
+    topCityContainer.appendChild(topCityTempContainer);
+    topCityTempContainer.appendChild(topCityTemp);
+    topCityTempContainer.appendChild(topCityTempUnit);
+
+};
+
 export{buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast};

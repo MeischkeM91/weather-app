@@ -4,6 +4,7 @@ import {buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast
 // this var will act as the value passed in through search bar
 let testLoc = 'seattle';
 let tempUnit = 'imperial';
+let topCitiesArr = ['New York','Chicago','Denver','Seattle','Tokyo','Beijing','Rome','Berlin','Paris','London']
 
 // Factory Function to create the location object
 const queriedLocation = (lat, lon, city, state) => {
@@ -21,13 +22,9 @@ async function getLocationData(loc){
 // Now we will use the OpenWeather API to pass the data to functions that will create the UI
 async function getWeatherData(loc){
     const owAPIKey = 'daf462f3a0662d022ea6cbe67da83b38';
-    let locationData =  await getLocationData(loc);
+    let locationData =  loc;//await getLocationData(loc);
     const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationData.lat}&lon=${locationData.lon}&units=${tempUnit}&appid=${owAPIKey}`);
     const weatherData = await response.json();
-    buildLocDetails(locationData, weatherData.timezone);
-    buildLocStats(weatherData);
-    buildWeatherOutlook(weatherData);
-    buildWeeklyForecast(weatherData);
     return weatherData;
 }
 
@@ -35,7 +32,12 @@ async function getWeatherData(loc){
 // TESTING PURPOSES
 // This will act as what happens when the location is searched (search initiated)
 async function testFunc(){
-    let anotherTest = await getWeatherData(testLoc);
+    let locationQuery = await getLocationData(testLoc)
+    let weatherQuery = await getWeatherData(locationQuery);
+    buildLocDetails(locationQuery, weatherQuery.timezone);
+    buildLocStats(weatherQuery);
+    buildWeatherOutlook(weatherQuery);
+    buildWeeklyForecast(weatherQuery);
     console.log(anotherTest);
     console.log(anotherTest.current.temp);
 }
