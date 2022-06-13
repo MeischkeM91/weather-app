@@ -38,6 +38,7 @@
 .more-soon-1{grid-area: moreSoonOne;}
 .more-soon-2{grid-area: moreSoonTwo;}
 footer{grid-area: footer;}
+
 /*****************************
 *** Main Content Container ***
 *****************************/
@@ -123,7 +124,32 @@ footer{grid-area: footer;}
 *** End Main Content Container ***
 *********************************/
 
-
+/*************************
+***Top Cities Container***
+*************************/
+.top-cities-content{display: flex; flex-direction: column;}
+.top-cities-header{
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 10%;
+}
+.top-cities-list-container{
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+}
+.top-city-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.top-city-container p{font-weight: 400;}
+.top-city-container:hover{transform: scale(1.05);}
+.top-city-temp-container{display: flex;}
+/*****************************
+***End Top Cities Container***
+*****************************/
 
 /****************************
 ***More Features Container***
