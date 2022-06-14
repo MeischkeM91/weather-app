@@ -63,6 +63,7 @@ footer{grid-area: footer;}
 /** Search Elements Styling **/
 .search-container{
     display: flex;
+    align-items: center;
 }
 #search-bar{
     width:40%;
