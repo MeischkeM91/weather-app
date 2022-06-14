@@ -9,7 +9,12 @@ function buildLocDetails(locData, timeZone){
     // Location data
     const cityStateHead = document.createElement('p');
     cityStateHead.classList.add('city-state-head');
-    cityStateHead.textContent = `${locData.city}, ${locData.state}`;
+    let cityStr = locData.city;
+    let stateStr = locData.state;
+    if(stateStr == undefined){
+        stateStr='';
+    }
+    cityStateHead.textContent = `${cityStr}, ${stateStr}`;
     // Time data
     let date = new Date();
     const newTimeZone = timeZone;
