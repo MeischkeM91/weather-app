@@ -1,10 +1,12 @@
+// This file contains the logic used to query the API and pass data to the interface building functions
 import './style.css';
 import * as icons from './importicons';
 import {buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast, buildTopCititesList} from './interface';
 
-// this var will act as the value passed in through search bar
+const searchInput = document.getElementById('search-bar');
+const searchBtn = document.querySelector('.search-icon');
 let tempUnit = 'imperial';
-let topCitiesArr = ['New York','Chicago','Denver','Seattle','Tokyo','Beijing','Rome','Berlin','Paris','London']
+let topCitiesArr = ['New York','Chicago','Denver','Seattle','Tokyo','Beijing','Rome','Berlin','Paris','London'];
 
 // Factory Function to create the location object
 const queriedLocation = (lat, lon, city, state) => {
@@ -42,9 +44,13 @@ function generateTopCities(arr){
     });
 };
 
-// TESTING PURPOSES
-// This will act as what happens when the location is searched (search initiated)
-async function testFunc(loc){
+// This is the search function
+searchBtn.addEventListener('click', ()=>{
+    runSearchQuery(searchInput.value)
+});
+
+// This function initiates the search query
+async function runSearchQuery(loc){
     let locationQuery = await getLocationData(loc);
     let weatherQuery = await getWeatherData(locationQuery);
     buildLocDetails(locationQuery, weatherQuery.timezone);
@@ -53,6 +59,5 @@ async function testFunc(loc){
     buildWeeklyForecast(weatherQuery);
 };
 
-testFunc(topCitiesArr[3]);
+runSearchQuery(topCitiesArr[0]);
 generateTopCities(topCitiesArr);
-// TESTING PURPOSES
