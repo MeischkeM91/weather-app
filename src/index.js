@@ -1,4 +1,5 @@
 import './style.css';
+import * as icons from './importicons';
 import {buildLocDetails, buildLocStats, buildWeatherOutlook, buildWeeklyForecast, buildTopCititesList} from './interface';
 
 // this var will act as the value passed in through search bar

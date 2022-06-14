@@ -5,4 +5,5 @@ import RainIcon from './icons/rain.svg';
 import SnowIcon from './icons/snow.svg';
 import SunnyIcon from './icons/sunny.svg';
 import ThunderIcon from './icons/thunder.svg';
-export {CloudyIcon,DrizzleIcon,HazeFogIcon,RainIcon,SnowIcon,SunnyIcon,ThunderIcon};
+import SearchIcon from './icons/search.svg';
+export {CloudyIcon,DrizzleIcon,HazeFogIcon,RainIcon,SnowIcon,SunnyIcon,ThunderIcon,SearchIcon};
