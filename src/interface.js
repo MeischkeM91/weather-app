@@ -6,6 +6,7 @@ import * as icons from './importicons';
 // This will build the "location-details" section of the main content container
 function buildLocDetails(locData, timeZone){
     const locationHeaderDiv = document.querySelector('.location-header');
+    locationHeaderDiv.innerHTML='';
     // Location data
     const cityStateHead = document.createElement('p');
     cityStateHead.classList.add('city-state-head');
@@ -32,6 +33,7 @@ function buildLocDetails(locData, timeZone){
 // This function displays weather stats such as Humidity, Chance of Rain, and Wind Speed 
 function buildLocStats(data){
     const locationStatsDiv = document.querySelector('.location-stats');
+    locationStatsDiv.innerHTML='';
     // Each line will have a div with two p elems, one for title and one for data
     const humidityDiv = document.createElement('div');
     humidityDiv.classList.add('humidity-container');
@@ -87,11 +89,13 @@ const determineWeatherIcon = (cond) => {
 function buildWeatherOutlook(data){
     // This code will determine the weather icon displayed
     const weatherIcon = document.querySelector('.weather-icon');
+    weatherIcon.src='';
     let weatherCond = (data.current.weather[0].main);
     let iconToUse = determineWeatherIcon(weatherCond);
     weatherIcon.src=iconToUse;
     // This code will build the temp details div
     const tempDetailsContainer = document.querySelector('.temp-details');
+    tempDetailsContainer.innerHTML='';
     const currentTempContainer = document.createElement('div');
     currentTempContainer.classList.add('current-temp-container');
     const currentTemp = document.createElement('p');
@@ -132,7 +136,7 @@ function buildWeatherOutlook(data){
 // This function will build the weekly forecast
 function buildWeeklyForecast(data){
     const forecastContainer = document.querySelector('.week-forecast');
-
+    forecastContainer.innerHTML='';
     // This function will create a container holding basic forecast info
     function createDayOfForecast(weatherData,i){
         const dayOfForecastContainer = document.createElement('div');
